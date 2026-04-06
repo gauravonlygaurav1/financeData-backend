@@ -1,0 +1,24 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: financeData
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/finance_data
+    username: ${DB_USERNAME:your_username}
+    password: ${DB_PASSWORD:your_password}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    show-sql: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
