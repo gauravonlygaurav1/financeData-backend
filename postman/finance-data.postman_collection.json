@@ -1,0 +1,296 @@
+{
+  "info": {
+    "_postman_id": "f60ce332-501f-4669-8d01-64db41c4c246",
+    "name": "finance-data",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46277604",
+    "_collection_link": "https://go.postman.co/collection/46277604-f60ce332-501f-4669-8d01-64db41c4c246?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "create user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Aman\",\r\n    \"email\": \"aman12@gmail.com\",\r\n    \"password\": \"aman123\",\r\n    \"role\": \"VIEWER\",\r\n    \"status\": \"ACTIVE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8082/user/create",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "user",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n      \"email\": \"aman12@gmail.com\",\r\n    \"password\": \"aman123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8082/user/login",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "list",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzc1NDc1OTk5LCJleHAiOjE3NzU0Nzk1OTl9.CWt0urAU1ocEJHbN21-vIiFNE8-Qvwe8sNBYSTV7pGs",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8082/user/list",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "user",
+                "list"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Records",
+      "item": [
+        {
+          "name": "add",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwicm9sZSI6IlZJRVdFUiIsImlhdCI6MTc3NTQ3Njc3MywiZXhwIjoxNzc1NDgwMzczfQ.qMDyKlfxChJVJR4s-R_yhfd_LzjUEhi1hJv0od3e1n8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzc1NDc1Mjg3LCJleHAiOjE3NzU0Nzg4ODd9.oZ7ppzI-YCkESUlf-K5hznnHoO3-zcZt4WcFiHFtBEA",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\" : \"2000\",\r\n    \"type\": \"EXPENSE\",\r\n    \"category\": \"Gambling\",\r\n    \"description\": \"Free withdrawl\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8082/record/add",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "record",
+                "add"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "allRecords",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwicm9sZSI6IlZJRVdFUiIsImlhdCI6MTc3NTQ3Njc3MywiZXhwIjoxNzc1NDgwMzczfQ.qMDyKlfxChJVJR4s-R_yhfd_LzjUEhi1hJv0od3e1n8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8082/record/all",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "record",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwicm9sZSI6IlZJRVdFUiIsImlhdCI6MTc3NTQ3Njc3MywiZXhwIjoxNzc1NDgwMzczfQ.qMDyKlfxChJVJR4s-R_yhfd_LzjUEhi1hJv0od3e1n8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\" : \"200\",\r\n    \"type\": \"EXPENSE\",\r\n    \"category\": \"Repairing\",\r\n    \"description\": \"Work Successfull\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8082/record/2",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "record",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwicm9sZSI6IlZJRVdFUiIsImlhdCI6MTc3NTQ3NzU0MCwiZXhwIjoxNzc1NDgxMTQwfQ.Dy0aW3GGpUltreCV_jYkbjalQaDSNzVHuVlmsynv5pU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8082/record/1",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "record",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "filter",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "summary",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "category",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "trends",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
