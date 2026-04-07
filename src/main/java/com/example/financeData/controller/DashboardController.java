@@ -6,6 +6,7 @@ import com.example.financeData.dto.SummaryResponse;
 import com.example.financeData.services.FinancialRecordService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,19 +21,19 @@ public class DashboardController {
     private final FinancialRecordService recordService;
 
     @GetMapping("/summary")
-    public SummaryResponse getSummary(HttpServletRequest request){
+    public ResponseEntity<SummaryResponse> getSummary(HttpServletRequest request){
 
         Long userId = (Long) request.getAttribute("userId");
 
-        return recordService.getSummary(userId);
+        return ResponseEntity.ok(recordService.getSummary(userId));
     }
 
     @GetMapping("/category")
-    public List<CategoryResponse> getCategorySummary(HttpServletRequest request){
+    public ResponseEntity<List<CategoryResponse>> getCategorySummary(HttpServletRequest request){
 
         Long userId = (Long) request.getAttribute("userId");
 
-        return recordService.getCategorySummary(userId);
+        return ResponseEntity.ok(recordService.getCategorySummary(userId));
     }
 
     @GetMapping("/trends")

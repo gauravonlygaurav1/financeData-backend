@@ -80,7 +80,9 @@ public class FinancialRecordServiceImpl implements FinancialRecordService {
         existing.setAmount(updatedRecord.getAmount());
         existing.setCategory(updatedRecord.getCategory());
         existing.setType(updatedRecord.getType());
-        existing.setLocalDate(updatedRecord.getLocalDate());
+        if (updatedRecord.getLocalDate() != null) {
+            existing.setLocalDate(updatedRecord.getLocalDate());
+        }
         existing.setDescription(updatedRecord.getDescription());
 
         return recordRepository.save(existing);

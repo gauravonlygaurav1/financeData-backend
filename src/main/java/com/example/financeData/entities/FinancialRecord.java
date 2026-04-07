@@ -34,8 +34,14 @@ public class FinancialRecord {
 
     private LocalDate localDate;
     @PrePersist
-    public void setCurrentDate() {
+    public void prePersist() {
         if(this.localDate == null){
+            this.localDate = LocalDate.now();
+        }
+    }
+    @PreUpdate
+    public void preUpdate() {
+        if (this.localDate == null) {
             this.localDate = LocalDate.now();
         }
     }

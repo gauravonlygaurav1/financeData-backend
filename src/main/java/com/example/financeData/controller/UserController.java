@@ -6,7 +6,10 @@ import com.example.financeData.exceptions.ResourceNotFoundException;
 import com.example.financeData.exceptions.UnauthorizedException;
 import com.example.financeData.repository.UserRepository;
 import com.example.financeData.services.JwtService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +23,7 @@ public class UserController {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     @PostMapping("/create")
-    public User createUser(@RequestBody User user){
+    public ResponseEntity<User> createUser(@RequestBody User user){
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -28,11 +31,11 @@ public class UserController {
 
         user.setPassword(hashedPassword);
 
-        return userRepository.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(user));
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request){
+    public ResponseEntity<String> login(@RequestBody LoginRequest request){
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -42,11 +45,23 @@ public class UserController {
         if(!encoder.matches(request.getPassword(), user.getPassword())){
             throw new UnauthorizedException("Invalid password");
         }
-        return jwtService.generateToken(user.getId(), user.getRole().name());
+        String token= jwtService.generateToken(user.getId(), user.getRole().name());
+        return ResponseEntity.ok(token);
     }
 
     @GetMapping("/list")
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public ResponseEntity<List<User>> getAllUsers(HttpServletRequest request){
+
+        Long userId= (Long)request.getAttribute("userId");
+
+        User user= userRepository.findById(userId)
+                .orElseThrow(()-> new RuntimeException(("User not found")));
+
+        String role= user.getRole().name();
+
+        if( !role.equals("ADMIN")){
+            throw new UnauthorizedException("Access denied: Admin only");
+        }
+        return ResponseEntity.ok(userRepository.findAll());
     }
 }

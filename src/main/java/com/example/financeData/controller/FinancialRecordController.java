@@ -6,6 +6,7 @@ import com.example.financeData.services.FinancialRecordService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -19,42 +20,43 @@ public class FinancialRecordController {
     private final FinancialRecordService recordService;
 
     @PostMapping("/add")
-    public FinancialRecord createRecord(
+    public ResponseEntity<FinancialRecord> createRecord(
             @Valid
             @RequestBody FinancialRecord record,
             HttpServletRequest request
     ){
         Long userId= (Long)request.getAttribute("userId");
 
-        return recordService.createRecord(record, userId);
+        return ResponseEntity.ok(recordService.createRecord(record, userId));
     }
 
     @GetMapping("/all")
-    public List<FinancialRecord> getAllRecords(HttpServletRequest request){
+    public ResponseEntity<List<FinancialRecord>> getAllRecords(HttpServletRequest request){
 
         Long userId = (Long) request.getAttribute("userId");
 
-        return recordService.getAllRecords(userId);
+        return ResponseEntity.ok(recordService.getAllRecords(userId));
     }
 
     @PutMapping("/{id}")
-    public FinancialRecord updateRecord(
+    public ResponseEntity<FinancialRecord> updateRecord(
             @Valid
             @PathVariable Long id,
             @RequestBody FinancialRecord record,
             HttpServletRequest request
     ){
         Long userId = (Long) request.getAttribute("userId");
-        return recordService.updateRecord(id, record, userId);
+        return ResponseEntity.ok(recordService.updateRecord(id, record, userId));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteRecord(
+    public ResponseEntity<String> deleteRecord(
             @PathVariable Long id,
             HttpServletRequest request
     ) {
         Long userId= (Long)request.getAttribute("userId");
         recordService.deleteRecord(id, userId);
+        return ResponseEntity.ok("Record deleted successfully");
     }
 
     @GetMapping("/filter")
