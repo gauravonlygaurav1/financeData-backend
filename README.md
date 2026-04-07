@@ -8,8 +8,9 @@ It is designed to demonstrate backend engineering skills including API design, d
 The system allows different users (Admin, Analyst, Viewer) to interact with financial data based on their permissions.
 
 ## API Documentation
-You can explore and test all APIs using the published Postman documentation:
-[![Postman Docs](https://img.shields.io/badge/API-Postman-orange)](https://documenter.getpostman.com/view/46277604/2sBXirhTU1)
+We can explore and test all APIs using my published Postman documentation:
+
+[![Postman Docs](https://img.shields.io/badge/API-Postman-orange)](https://documenter.getpostman.com/view/46277604/2sBXirhTU1)[View Postman Documentation]
 
 OR
 
