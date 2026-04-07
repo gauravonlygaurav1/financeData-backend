@@ -7,8 +7,12 @@ It is designed to demonstrate backend engineering skills including API design, d
 
 The system allows different users (Admin, Analyst, Viewer) to interact with financial data based on their permissions.
 
-
-
+## API Documentation
+You can explore and test all APIs using the published Postman documentation:
+[![Postman Docs](https://img.shields.io/badge/API-Postman-orange)](https://documenter.getpostman.com/view/46277604/2sBXirhTU1)
+OR
+Import the Postman collection from
+`/postman/finance-data.postman_collection.json`
 
 ## Tech Stack
 
@@ -21,7 +25,6 @@ The system allows different users (Admin, Analyst, Viewer) to interact with fina
 **Authentication:** JWT(JSON Web Token)
 
 **ORM:** Spring Data JPA/ Hibernate
-
 
 
 ## Features
