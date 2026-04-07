@@ -9,7 +9,7 @@ The system allows different users (Admin, Analyst, Viewer) to interact with fina
 
 ## API Documentation
 We can explore and test all APIs using my published Postman documentation:
-- https://documenter.getpostman.com/view/46277604/2sBXirhTU1
+![Postman](https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg)https://documenter.getpostman.com/view/46277604/2sBXirhTU1
 
 OR
 
